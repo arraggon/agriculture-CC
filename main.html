@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>9-layer Vertical Farm Stack (scatter → stack)</title>
+<style>
+    html, body {
+    margin: 0;
+    overflow-x: hidden;   /* ← 禁止左右滚动 */
+    /* overflow-y: hidden; */
+    background: #d5dbe5;
+    background-image: url("bg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    }
+  body {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 220vh;          /* 有滚动空间 */
+    margin: 0;
+  }
+
+.wrapper {
+    width: 100%;
+    position: relative;
+    transform: scaleY(0.5);
+    transform-origin: bottom center;
+    left: 50%;
+    top: 550px;
+    /* overflow-y: hidden; */
+}
+
+  .tray {
+    width: 260px;
+    height: 260px;
+    background: #93a8c7;      /* 浅灰蓝 */
+    border: 5px solid #000;   /* 黑边框 */
+    border-radius: 22px;
+    transform: skewX(-18deg) scaleY(0.85);
+    transform-origin: top left;
+    position: absolute;
+    left: -100px;
+    opacity: 0;                /* 初始不可见 */
+    transition: opacity 1s ease;
+  }
+
+  .veg-container {
+    width: 250px;
+    height: 250px;
+    transform: skewX(-18deg) scaleY(1);
+    position: absolute;
+    left: -125px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    padding: 35px;
+    box-sizing: border-box;
+  }
+
+  .veg {
+    font-size: 36px;
+    transform: skewX(18deg) scaleY(2);  /* 楼层里的“直立”状态 */
+    transform-origin: center bottom;
+    transition: transform 1.2s ease, opacity 1.2s ease;
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- ====== 1 层（最底） top: 400 ====== -->
+  <div class="tray" style="top: 400px; z-index: 0;"></div>
+  <div class="veg-container" style="top: 400px; z-index: 1;">
+    <div class="veg">🥬</div><div class="veg">🥦</div><div class="veg">🥒</div><div class="veg">🥕</div>
+    <div class="veg">🌶️</div><div class="veg">🍅</div><div class="veg">🧅</div><div class="veg">🧄</div>
+    <div class="veg">🥬</div><div class="veg">🥦</div><div class="veg">🥒</div><div class="veg">🥕</div>
+    <div class="veg">🌶️</div><div class="veg">🍅</div><div class="veg">🧅</div><div class="veg">🧄</div>
+  </div>
+
+  <!-- ====== 2 层 top: 310 ====== -->
+  <div class="tray" style="top: 310px; z-index: 2;"></div>
+  <div class="veg-container" style="top: 310px; z-index: 3;">
+    <div class="veg">🥬</div><div class="veg">🥦</div><div class="veg">🥒</div><div class="veg">🥕</div>
+    <div class="veg">🌶️</div><div class="veg">🍅</div><div class="veg">🧅</div><div class="veg">🧄</div>
+    <div class="veg">🥬</div><div class="veg">🥦</div><div class="veg">🥒</div><div class="veg">🥕</div>
+    <div class="veg">🌶️</div><div class="veg">🍅</div><div class="veg">🧅</div><div class="veg">🧄</div>
+  </div>
+
+  <!-- ====== 3 层 top: 220 ====== -->
+  <div class="tray" style="top: 220px; z-index: 4;"></div>
+  <div class="veg-container" style="top: 220px; z-index: 5;">
+    <div class="veg">🥬</div><div class="veg">🥦</div><div class="veg">🥒</div><div class="veg">🥕</div>
+    <div class="veg">🌶️</div><div class="veg">🍅</div><div class="veg">🧅</div><div class="veg">🧄</div>
+    <div class="veg">🥬</div><div class="veg">🥦</div><div class="veg">🥒</div><div class="veg">🥕</div>
+    <div class="veg">🌶️</div><div class="veg">🍅</div><div class="veg">🧅</div><div class="veg">🧄</div>
+  </div>
+
+  <!-- ====== 4 层 top: 130 ====== -->
+  <div class="tray" style="top: 130px; z-index: 6;"></div>
+  <div class="veg-container" style="top: 130px; z-index: 7;">
+    <div class="veg">🥬</div><div class="veg">🥦</div><div class="veg">🥒</div><div class="veg">🥕</div>
+    <div class="veg">🌶️</div><div class="veg">🍅</div><div class="veg">🧅</div><div class="veg">🧄</div>
+    <div class="veg">🥬</div><div class="veg">🥦</div><div class="veg">🥒</div><div class="veg">🥕</div>
+    <div class="veg">🌶️</div><div class="veg">🍅</div><div class="veg">🧅</div><div class="veg">🧄</div>
+  </div>
+
+  <!-- ====== 5 层 top: 40 ====== -->
+  <div class="tray" style="top: 40px; z-index: 8;"></div>
+  <div class="veg-container" style="top: 40px; z-index: 9;">
+    <div class="veg">🥬</div><div class="veg">🥦</div><div class="veg">🥒</div><div class="veg">🥕</div>
+    <div class="veg">🌶️</div><div class="veg">🍅</div><div class="veg">🧅</div><div class="veg">🧄</div>
+    <div class="veg">🥬</div><div class="veg">🥦</div><div class="veg">🥒</div><div class="veg">🥕</div>
+    <div class="veg">🌶️</div><div class="veg">🍅</div><div class="veg">🧅</div><div class="veg">🧄</div>
+  </div>
+
+  <!-- ====== 6 层 top: -50 ====== -->
+  <div class="tray" style="top: -50px; z-index: 10;"></div>
+  <div class="veg-container" style="top: -50px; z-index: 11;">
+    <div class="veg">🥬</div><div class="veg">🥦</div><div class="veg">🥒</div><div class="veg">🥕</div>
+    <div class="veg">🌶️</div><div class="veg">🍅</div><div class="veg">🧅</div><div class="veg">🧄</div>
+    <div class="veg">🥬</div><div class="veg">🥦</div><div class="veg">🥒</div><div class="veg">🥕</div>
+    <div class="veg">🌶️</div><div class="veg">🍅</div><div class="veg">🧅</div><div class="veg">🧄</div>
+  </div>
+
+  <!-- ====== 7 层 top: -140 ====== -->
+  <div class="tray" style="top: -140px; z-index: 12;"></div>
+  <div class="veg-container" style="top: -140px; z-index: 13;">
+    <div class="veg">🥬</div><div class="veg">🥦</div><div class="veg">🥒</div><div class="veg">🥕</div>
+    <div class="veg">🌶️</div><div class="veg">🍅</div><div class="veg">🧅</div><div class="veg">🧄</div>
+    <div class="veg">🥬</div><div class="veg">🥦</div><div class="veg">🥒</div><div class="veg">🥕</div>
+    <div class="veg">🌶️</div><div class="veg">🍅</div><div class="veg">🧅</div><div class="veg">🧄</div>
+  </div>
+
+  <!-- ====== 8 层 top: -230 ====== -->
+  <div class="tray" style="top: -230px; z-index: 14;"></div>
+  <div class="veg-container" style="top: -230px; z-index: 15;">
+    <div class="veg">🥬</div><div class="veg">🥦</div><div class="veg">🥒</div><div class="veg">🥕</div>
+    <div class="veg">🌶️</div><div class="veg">🍅</div><div class="veg">🧅</div><div class="veg">🧄</div>
+    <div class="veg">🥬</div><div class="veg">🥦</div><div class="veg">🥒</div><div class="veg">🥕</div>
+    <div class="veg">🌶️</div><div class="veg">🍅</div><div class="veg">🧅</div><div class="veg">🧄</div>
+  </div>
+
+  <!-- ====== 9 层 top: -320（最顶） ====== -->
+  <div class="tray" style="top: -320px; z-index: 16;"></div>
+  <div class="veg-container" style="top: -320px; z-index: 17;">
+    <div class="veg">🥬</div><div class="veg">🥦</div><div class="veg">🥒</div><div class="veg">🥕</div>
+    <div class="veg">🌶️</div><div class="veg">🍅</div><div class="veg">🧅</div><div class="veg">🧄</div>
+    <div class="veg">🥬</div><div class="veg">🥦</div><div class="veg">🥒</div><div class="veg">🥕</div>
+    <div class="veg">🌶️</div><div class="veg">🍅</div><div class="veg">🧅</div><div class="veg">🧄</div>
+  </div>
+
+</div>
+
+<script>
+  const trays = document.querySelectorAll('.tray');
+  const vegs  = Array.from(document.querySelectorAll('.veg'));
+
+  const baseTransform = 'skewX(18deg) scaleY(2)';
+
+  // 记录每颗蔬菜在“楼层状态”时的中心位置
+  const basePositions = [];
+
+  function collectBasePositions() {
+    basePositions.length = 0;
+    vegs.forEach(veg => {
+      // 确保先处于“楼层状态”
+      veg.style.transform = baseTransform;
+    });
+
+    // 下一帧拿位置，保证布局完成
+    requestAnimationFrame(() => {
+      vegs.forEach(veg => {
+        const rect = veg.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top  + rect.height / 2;
+        basePositions.push({ x: cx, y: cy });
+      });
+
+      // 拿完位置以后再散开
+      scatterFromBase();
+    });
+  }
+
+  function scatterFromBase() {
+  const GRID_R = 8;
+  const GRID_C = 18;
+
+  const vw = window.innerWidth*1.25;
+  const vh = window.innerHeight;
+
+  // ===== 这里控制“散布区域”的位置和大小 =====
+  const SCATTER_LEFT   = vw * 0.05;   // 离左边 15% 开始
+  const SCATTER_TOP    = vh * 0.12;   // 离上边 10% 开始
+  const SCATTER_WIDTH  = vw * 0.70;   // 宽度占 70% 屏幕宽
+  const SCATTER_HEIGHT = vh * 0.90;   // 高度占 50% 屏幕高（上半部分）
+  // ======================================
+
+  const spacingX = SCATTER_WIDTH  / (GRID_C + 1);
+  const spacingY = SCATTER_HEIGHT / (GRID_R + 1);
+
+  vegs.forEach((veg, index) => {
+    const row = Math.floor(index / GRID_C);
+    const col = index % GRID_C;
+
+    const targetX = SCATTER_LEFT + (col + 1) * spacingX;
+    const targetY = SCATTER_TOP  + (row + 1) * spacingY;
+
+    const base = basePositions[index];
+    const dx = targetX - base.x;
+    const dy = targetY - base.y;
+
+    veg.style.transform = `${baseTransform} translate(${dx}px, ${dy}px)`;
+  });
+}
+
+
+  // 初始：记录楼层位置 → 散开
+  window.addEventListener('load', collectBasePositions);
+
+  let stacked = false;
+  let lastScrollY = window.scrollY;
+
+  function stackBack() {
+    if (stacked) return;
+    stacked = true;
+
+    // 托盘淡入
+    trays.forEach(t => {
+      t.style.opacity = '1';
+    });
+
+    // 蔬菜回到楼层状态
+    vegs.forEach(veg => {
+      veg.style.transform = baseTransform;
+    });
+  }
+
+  window.addEventListener('scroll', () => {
+    const currentY = window.scrollY;
+
+    // 向下滚一段距离触发“汇拢成 9 层”
+    if (!stacked && currentY > lastScrollY && currentY > 300) {
+      stackBack();
+    }
+
+    lastScrollY = currentY;
+  });
+</script>
+</body>
+</html>
